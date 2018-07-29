@@ -1,0 +1,243 @@
+﻿<Page
+    x:Class="AppX.DetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppX"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    NavigationCacheMode="Required">
+
+    <Grid Background="#e5e5e5"
+          Name="mainGrid"
+          SizeChanged="mainGrid_SizeChanged">
+
+        <Grid Background="Transparent" Grid.ColumnSpan="2">
+            <SplitView Name="svLeft"
+                       OpenPaneLength="400"
+                       DisplayMode="Inline">
+                <SplitView.Pane>
+                    <local:FragmentLeft Name="fragmentLeft"></local:FragmentLeft>
+                </SplitView.Pane>
+                <SplitView.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="9*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <local:FragmentTop x:Name="fragmentTop"></local:FragmentTop>
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0" Canvas.ZIndex="1"
+                                  Margin="2,8,2,0"
+                                  VerticalAlignment="Top">
+                                <local:SearchBox  x:Name="searchBox" Visibility="Collapsed"></local:SearchBox>
+                            </Grid>
+
+                            <Grid Grid.Row="0" CornerRadius="8" Margin="8" Background="#fff">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Row="1"
+                                      Grid.ColumnSpan="2"
+                                      Opacity="0.8"
+                                      Name="gridContent"
+                                      Background="#fff">
+                                </Grid>
+                                <StackPanel Orientation="Vertical"
+                                            Margin="16,12,0,0"
+                                            HorizontalAlignment="Left"
+                                            Grid.Row="1"
+                                            Grid.Column="1">
+                                    <TextBlock Name="tblName"
+                                               FontFamily="Roboto Condensed"
+                                               FontSize="22"
+                                               TextWrapping="Wrap"
+                                               Foreground="#135c15"
+                                               FontWeight="Bold"
+                                               HorizontalAlignment="Left"></TextBlock>
+                                    <local:ButtonFavorite x:Name="btnFavorite"
+                                                          Margin="-12,0,0,0"></local:ButtonFavorite>
+                                </StackPanel>
+                                <Image Name="imgBackground"
+                                   Grid.RowSpan="2"
+                                   Grid.ColumnSpan="2"
+                                   Canvas.ZIndex="-1"
+                                   Opacity="0.8"
+                                   Stretch="UniformToFill"></Image>
+                                <Image Name="imgMain"
+                                   Margin="16,16,0,16"
+                                   Grid.RowSpan="2"
+                                       MaxWidth="280"
+                                  VerticalAlignment="Center"
+                                   Stretch="Uniform"  
+                                   ></Image>
+                            </Grid>
+
+                            <Grid Grid.Row="1" CornerRadius="8" Margin="8" Background="#fff">
+                                <Pivot SelectionChanged="Pivot_SelectionChanged"
+                                       Name="pivot">
+                                    <PivotItem>
+                                        <PivotItem.Header>
+                                            <Grid Background="Transparent"
+                                              Padding="6"
+                                              CornerRadius="8">
+                                                <TextBlock Text="Thông Tin"
+                                           Foreground="#135c15"
+                                           FontFamily="Roboto"
+                                           FontWeight="Bold"
+                                                           Margin="0,-4,0,10"></TextBlock>
+                                                <Rectangle Fill="#135c15"
+                                                           Height="5"
+                                                           VerticalAlignment="Bottom"
+                                                           Name="pvInfo"></Rectangle>
+                                            </Grid>
+                                        </PivotItem.Header>
+                                        <Grid>
+                                            <ScrollViewer>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="120"></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <StackPanel Orientation="Vertical"
+                                                                Grid.Column="0"
+                                                                HorizontalAlignment="Right">
+                                                        <TextBlock Text="Tác Giả  :  "
+                                               FontSize="18"
+                                               Margin="0,12,0,0"
+                                                                   Foreground="#135c15"
+                                                                   HorizontalAlignment="Right" 
+                                                                   FontFamily="Roboto Condensed"
+                                                                   FontWeight="Bold"></TextBlock>
+                                                        <TextBlock Text="Thể Loại  :  "
+                                                                   HorizontalAlignment="Right"
+                                                                   Foreground="#135c15"
+                                                                   FontFamily="Roboto Condensed"
+                                                                   FontWeight="Bold"
+                                               FontSize="18"
+                                               Margin="0,12,0,0"></TextBlock>
+                                                        <TextBlock Text="Lượt Xem  :  "
+                                                                   HorizontalAlignment="Right"
+                                                                   Foreground="#135c15"
+                                                                   FontFamily="Roboto Condensed"
+                                                                   FontWeight="Bold"
+                                               FontSize="18"
+                                               Margin="0,12,0,0"></TextBlock>
+                                                        <TextBlock Text="Nội dung  :  "
+                                                                   Foreground="#135c15"
+                                                                   HorizontalAlignment="Right"
+                                                                   FontFamily="Roboto Condensed"
+                                                                   FontWeight="Bold"
+                                                           FontSize="18"
+                                                                   Margin="0,12,0,0"
+                                               ></TextBlock>
+                                                    </StackPanel>
+                                                    
+                                                    <StackPanel Orientation="Vertical"
+                                                                Grid.Column="1"
+                                                                Margin="8,0,0,0">
+                                                        <TextBlock Name="tblAuthor"
+                                                                   FontFamily="Roboto"
+                                                                   Foreground="#575353"
+                                               FontSize="17"
+                                               Margin="0,12,0,0"></TextBlock>
+                                                        <TextBlock Name="tblGenre"
+                                                                   FontFamily="Roboto"
+                                                                   Foreground="#575353"
+                                               FontSize="17"
+                                               Margin="0,13,0,0"></TextBlock>
+                                                        <TextBlock Name="tblSource"
+                                                                   FontFamily="Roboto"
+                                                                   Foreground="#575353"
+                                               FontSize="17"
+                                               Margin="0,13,0,0"></TextBlock>
+                                                        <TextBlock Name="tblSum"
+                                                                   FontFamily="Roboto"
+                                                                   FontSize="16"
+                                                                   Foreground="#575353"
+                                               HorizontalAlignment="Left"
+                                               TextAlignment="Left"
+                                               TextWrapping="Wrap"
+                                               Margin="0,15,0,0"
+                                                                   TextLineBounds="Full"></TextBlock>
+                                                    </StackPanel>
+
+                                                </Grid>
+                                            </ScrollViewer>
+                                        </Grid>
+                                    </PivotItem>
+                                    <PivotItem>
+                                        <PivotItem.Header>
+                                            <Grid Padding="6" CornerRadius="8">
+                                                <TextBlock Text="Chương Truyện"
+                                           Foreground="#135c15"
+                                           FontFamily="Roboto"
+                                           FontWeight="Bold"
+                                                           Margin="0,-4,0,10"></TextBlock>
+                                                <Rectangle Fill="#135c15"
+                                                           Height="5"
+                                                           VerticalAlignment="Bottom"
+                                                           Name="pvChap"></Rectangle>
+                                            </Grid>
+                                        </PivotItem.Header>
+                                        <Grid>
+                                            <GridView Name="lvChapter"
+                                      VerticalAlignment="Stretch"
+                                      HorizontalAlignment="Stretch"
+                                      IsItemClickEnabled="True"
+                                      ItemClick="lvChapter_ItemClick"
+                                          SizeChanged="lvChapter_SizeChanged"
+                                          Loaded="LvHomePage_Loaded"
+                                          Margin="0,12,0,0">
+                                                <GridView.ItemContainerStyle>
+                                                    <Style TargetType="GridViewItem">
+                                                        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+                                                        <Setter Property="HorizontalContentAlignment" Value="Left"></Setter>
+                                                    </Style>
+                                                </GridView.ItemContainerStyle>
+                                                <GridView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid>
+                                                            <TextBlock Text="{Binding displayName}"
+                                                           Margin="7,0,0,0"
+                                                           TextAlignment="Left"
+                                                           FontFamily="Roboto"
+                                                           Foreground="#575353"
+                                                           FontSize="17"></TextBlock>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </GridView.ItemTemplate>
+                                            </GridView>
+                                        </Grid>
+                                    </PivotItem>
+                                </Pivot>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </SplitView.Content>
+            </SplitView>
+
+        </Grid>
+        <local:FragmentCheckConnection Canvas.ZIndex="-1" Grid.ColumnSpan="2"></local:FragmentCheckConnection>
+        <local:FragmentLoad x:Name="fragmentLoad" Canvas.ZIndex="5" Visibility="Collapsed"></local:FragmentLoad>
+
+
+    </Grid>
+</Page>

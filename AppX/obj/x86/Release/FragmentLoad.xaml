@@ -1,0 +1,35 @@
+﻿<UserControl
+    x:Class="AppX.FragmentLoad"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppX"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid Background="#b8e0b8" Opacity="0.8">
+        <ProgressRing Width="140"
+                      Height="140"
+                      IsActive="True"
+                      Foreground="#135c15"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center"></ProgressRing>
+        <Image Width="110"
+               Height="110"
+               Source="Assets/logoMain.png"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"></Image>
+        <TextBlock Text="Đang tải dữ liệu..."
+                   FontWeight="Bold"
+                   FontStyle="Italic"
+                   FontSize="26"
+                   Foreground="#135c15"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Margin="0,180,0,0"></TextBlock>
+
+    </Grid>
+</UserControl>
+
